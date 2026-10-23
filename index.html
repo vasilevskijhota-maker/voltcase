@@ -52,5 +52,11 @@ $('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))close()});
 $('modalBody').addEventListener('submit',async e=>{if(e.target.id!=='orderForm')return;e.preventDefault();let fd=new FormData(e.target);let payload={name:fd.get('name'),phone:fd.get('phone'),address:fd.get('address'),comment:fd.get('comment'),delivery,items:cart.map(x=>{let p=products.find(p=>p.id===x.id);return{name:p.name,model:x.model,qty:x.qty,price:p.price}}),total:Math.round(subtotal()*(promo==='VOLT10'?.9:1)),initData:tg?.initData||''};let btn=e.target.querySelector('[type=submit]');btn.disabled=true;btn.textContent='Отправляем…';try{let r=await fetch('/api/order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});let data=await r.json();if(!r.ok||!data.ok)throw new Error(data.message||'Ошибка отправки');show('Заказ отправлен',`<div style="text-align:center;padding:15px 0"><div style="font-size:44px">✓</div><h3>Спасибо за заказ!</h3><p>Номер: <b>${esc(data.orderNo)}</b></p><p class="hint">Продавец получил уведомление, если Telegram настроен на сервере.</p><button class="btn full" id="finish">Вернуться в магазин</button></div>`);$('finish').onclick=()=>{cart=[];promo='';count();close()}}catch(err){toast(err.message+' Проверь подключение сервера.');btn.disabled=false;btn.textContent='Отправить заказ'}});
 render();count();
 </script>
-</body>
+</body><div style="text-align:center; margin:25px 0;">
+  <a href="https://t.me/VoltCaseoffice"
+     target="_blank"
+     style="display:inline-block; background:#229ED9; color:white; padding:14px 24px; border-radius:12px; text-decoration:none; font-weight:bold;">
+    ✈ Наш Telegram
+  </a>
+</div>
 </html>
