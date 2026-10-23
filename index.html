@@ -25,17 +25,43 @@
 <div class="overlay" id="overlay"><div class="modal"><div class="modalhead"><h3 id="modalTitle">Корзина</h3><button class="close" id="closeModal">×</button></div><div id="modalBody"></div></div></div><div class="toast" id="toast"></div>
 <script>
 const tg=window.Telegram?.WebApp;tg?.ready();tg?.expand();
-const products=[
-{id:1,type:'glass',name:'Защитное стекло Premium',price:690,desc:'Прозрачное · 9H',art:'phone',color:'',badge:'ХИТ',models:['iPhone 13','iPhone 14','iPhone 15','iPhone 16','iPhone 17','iPhone 14 Pro','iPhone 15 Pro','iPhone 16 Pro','iPhone 17 Pro']},
-{id:2,type:'glass',name:'Стекло Privacy',price:990,desc:'Защита от посторонних взглядов',art:'phone',color:'yellow',badge:'PRIVACY',models:['iPhone 13','iPhone 14','iPhone 15','iPhone 16','iPhone 17','iPhone 14 Pro','iPhone 15 Pro','iPhone 16 Pro','iPhone 17 Pro']},
-{id:3,type:'airpods',name:'Чехол Soft Touch',price:790,desc:'Мягкий силикон · Blue',art:'case',color:'gray',badge:'NEW',models:['AirPods 2','AirPods 3','AirPods 4','AirPods Pro','AirPods Pro 2']},
-{id:4,type:'airpods',name:'Чехол Minimal',price:890,desc:'Матовый · White',art:'case',color:'mint',badge:'',models:['AirPods 2','AirPods 3','AirPods 4','AirPods Pro','AirPods Pro 2']},
-{id:5,type:'glass',name:'Стекло Full Cover',price:890,desc:'Полное покрытие экрана',art:'phone',color:'gray',badge:'FULL COVER',models:['iPhone 13','iPhone 14','iPhone 15','iPhone 16','iPhone 17','iPhone 14 Pro','iPhone 15 Pro','iPhone 16 Pro','iPhone 17 Pro']},
-{id:6,type:'airpods',name:'Чехол Color Pop',price:990,desc:'Защита от царапин · Coral',art:'case',color:'yellow',badge:'',models:['AirPods 2','AirPods 3','AirPods 4','AirPods Pro','AirPods Pro 2']}
+const products = [
+  // AirPods 4
+  {id:1,type:'airpods',name:'Силиконовый чехол AirPods 4',price:0,desc:'Цвет: Rose · Остаток: 2 шт.',art:'case',color:'#E8A5B5',badge:'ROSE',models:['AirPods 4']},
+  {id:2,type:'airpods',name:'Силиконовый чехол AirPods 4',price:0,desc:'Цвет: Green · Остаток: 2 шт.',art:'case',color:'#A7BE9A',badge:'GREEN',models:['AirPods 4']},
+  {id:3,type:'airpods',name:'Силиконовый чехол AirPods 4',price:0,desc:'Цвет: Orange · Остаток: 1 шт.',art:'case',color:'#F28B36',badge:'ORANGE',models:['AirPods 4']},
+  {id:4,type:'airpods',name:'Силиконовый чехол AirPods 4',price:0,desc:'Цвет: Pink · Остаток: 2 шт.',art:'case',color:'#F5A9C4',badge:'PINK',models:['AirPods 4']},
+  {id:5,type:'airpods',name:'Силиконовый чехол AirPods 4',price:0,desc:'Цвет: Bright Blue · Остаток: 1 шт.',art:'case',color:'#159FE5',badge:'BRIGHT BLUE',models:['AirPods 4']},
+  {id:6,type:'airpods',name:'Силиконовый чехол AirPods 4',price:0,desc:'Цвет: Red · Остаток: 1 шт.',art:'case',color:'#D92E3A',badge:'RED',models:['AirPods 4']},
+  {id:7,type:'airpods',name:'Силиконовый чехол AirPods 4',price:0,desc:'Цвет: Blue · Остаток: 2 шт.',art:'case',color:'#527EAF',badge:'BLUE',models:['AirPods 4']},
+  {id:8,type:'airpods',name:'Силиконовый чехол AirPods 4',price:0,desc:'Цвет: Purple · Остаток: 2 шт.',art:'case',color:'#A68BCB',badge:'PURPLE',models:['AirPods 4']},
+  {id:9,type:'airpods',name:'Силиконовый чехол AirPods 4',price:0,desc:'Цвет: Yellow · Остаток: 1 шт.',art:'case',color:'#F0D45C',badge:'YELLOW',models:['AirPods 4']},
+  // AirPods 3
+  {id:10,type:'airpods',name:'Силиконовый чехол AirPods 3',price:0,desc:'Цвет: Pink · Остаток: 4 шт.',art:'case',color:'#F5A9C4',badge:'PINK',models:['AirPods 3']},
+  {id:11,type:'airpods',name:'Силиконовый чехол AirPods 3',price:0,desc:'Цвет: Purple · Остаток: 3 шт.',art:'case',color:'#A68BCB',badge:'PURPLE',models:['AirPods 3']},
+  {id:12,type:'airpods',name:'Силиконовый чехол AirPods 3',price:0,desc:'Цвет: Rose · Остаток: 2 шт.',art:'case',color:'#E8A5B5',badge:'ROSE',models:['AirPods 3']},
+
+  // AirPods Pro
+  {id:13,type:'airpods',name:'Силиконовый чехол AirPods Pro',price:0,desc:'Цвет: Red · Остаток: 1 шт.',art:'case',color:'#D92E3A',badge:'RED',models:['AirPods Pro']},
+  {id:14,type:'airpods',name:'Силиконовый чехол AirPods Pro',price:0,desc:'Цвет: Bright Blue · Остаток: 1 шт.',art:'case',color:'#159FE5',badge:'BRIGHT BLUE',models:['AirPods Pro']},
+  {id:15,type:'airpods',name:'Силиконовый чехол AirPods Pro',price:0,desc:'Цвет: Pink · Остаток: 2 шт.',art:'case',color:'#F5A9C4',badge:'PINK',models:['AirPods Pro']},
+  {id:16,type:'airpods',name:'Силиконовый чехол AirPods Pro',price:0,desc:'Цвет: Yellow · Остаток: 1 шт.',art:'case',color:'#F0D45C',badge:'YELLOW',models:['AirPods Pro']},
+  {id:17,type:'airpods',name:'Силиконовый чехол AirPods Pro',price:0,desc:'Цвет: Rose · Остаток: 2 шт.',art:'case',color:'#E8A5B5',badge:'ROSE',models:['AirPods Pro']},
+  {id:18,type:'airpods',name:'Силиконовый чехол AirPods Pro',price:0,desc:'Цвет: Purple · Остаток: 2 шт.',art:'case',color:'#A68BCB',badge:'PURPLE',models:['AirPods Pro']},
+  {id:19,type:'airpods',name:'Силиконовый чехол AirPods Pro',price:0,desc:'Цвет: Orange · Остаток: 1 шт.',art:'case',color:'#F28B36',badge:'ORANGE',models:['AirPods Pro']},
+  {id:20,type:'airpods',name:'Силиконовый чехол AirPods Pro',price:0,desc:'Цвет: Green · Остаток: 1 шт.',art:'case',color:'#A7BE9A',badge:'GREEN',models:['AirPods Pro']},
+  {id:21,type:'airpods',name:'Силиконовый чехол AirPods Pro',price:0,desc:'Цвет: Blue · Остаток: 1 шт.',art:'case',color:'#527EAF',badge:'BLUE',models:['AirPods Pro']},
+  // AirPods Pro 2
+  {id:22,type:'airpods',name:'Силиконовый чехол AirPods Pro 2',price:0,desc:'Цвет: Red · Остаток: 1 шт.',art:'case',color:'#D92E3A',badge:'RED',models:['AirPods Pro 2']},
+  {id:23,type:'airpods',name:'Силиконовый чехол AirPods Pro 2',price:0,desc:'Цвет: Rose · Остаток: 1 шт.',art:'case',color:'#E8A5B5',badge:'ROSE',models:['AirPods Pro 2']},
+  {id:24,type:'airpods',name:'Силиконовый чехол AirPods Pro 2',price:0,desc:'Цвет: Purple · Остаток: 1 шт.
+',art:'case',color:'#A68BCB',badge:'PURPLE',models:['AirPods Pro 2']},
+  {id:25,type:'airpods',name:'Силиконовый чехол AirPods Pro 2',price:0,desc:'Цвет: Pink · Остаток: 1 шт.',art:'case',color:'#F5A9C4',badge:'PINK',models:['AirPods Pro 2']},
+ // OG Glass
+  {id:26,type:'glass',name:'Защитное стекло OG Glass',price:0,desc:'iPhone 15 / 16 · Остаток: 10 шт.',art:'phone',color:'#202832',badge:'OG GLASS',models:['iPhone 15','iPhone 16']},
+  {id:27,type:'glass',name:'Защитное стекло OG Glass',price:0,desc:'iPhone 15 Pro Max · Остаток: 10 шт.',art:'phone',color:'#202832',badge:'OG GLASS',models:['iPhone 15 Pro Max']},
+  {id:28,type:'glass',name:'Защитное стекло OG Glass',price:0,desc:'iPhone 15 Pro · Остаток: 10 шт.',art:'phone',color:'#202832',badge:'OG GLASS',models:['iPhone 15 Pro']}
 ];
-let cart=[],filter='all',promo='',delivery='courier',quizType='glass',quizStep=0;
-const $=id=>document.getElementById(id),money=n=>new Intl.NumberFormat('ru-RU').format(n)+' ₽';
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function toast(s){$('toast').textContent=s;$('toast').classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').classList.remove('show'),2600)}
 function render(){ $('products').innerHTML=products.filter(p=>filter==='all'||p.type===filter).map(p=>`<article class="product"><div class="picture ${p.color}">${p.badge?`<span class="badge">${p.badge}</span>`:''}${p.art==='phone'?'<div class="phoneart"></div>':'<div class="caseart"></div>'}</div><div class="info"><div class="type">${p.type==='glass'?'Защита экрана':'Аксессуары'}</div><div class="name">${p.name}</div><div class="desc">${p.desc}</div><div class="prodfoot"><span class="price">${money(p.price)}</span><button class="add" data-add="${p.id}" aria-label="Добавить товар">+</button></div></div></article>`).join('');document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b.classList.contains('filter')&&b.dataset.filter===filter))}
 function count(){ $('count').textContent=cart.reduce((s,x)=>s+x.qty,0)}
