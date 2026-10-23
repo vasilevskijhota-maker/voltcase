@@ -60,7 +60,7 @@ const products = [
  // OG Glass
   {id:26,type:'glass',name:'Защитное стекло OG Glass',price:0,desc:'iPhone 15 / 16 · Остаток: 10 шт.',art:'phone',color:'#202832',badge:'OG GLASS',models:['iPhone 15','iPhone 16']},
   {id:27,type:'glass',name:'Защитное стекло OG Glass',price:0,desc:'iPhone 15 Pro Max · Остаток: 10 шт.',art:'phone',color:'#202832',badge:'OG GLASS',models:['iPhone 15 Pro Max']},
-  {id:28,type:'glass',name:'Защитное стекло OG Glass',price:0,desc:'iPhone 15 Pro · Остаток: 10 шт.',art:'phone',color:'#202832',badge:'OG GLASS',models:['iPhone 15 Pro']}];
+  {id:28,type:'glass',name:'Защитное стекло OG Glass',price:0,desc:'iPhone 15 Pro · Остаток: 10 шт.',art:'phone',color:'#202832',badge:'OG GLASS',models:['iPhone 15;
 function toast(s){$('toast').textContent=s;$('toast').classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').classList.remove('show'),2600)}
 function render(){ $('products').innerHTML=products.filter(p=>filter==='all'||p.type===filter).map(p=>`<article class="product"><div class="picture ${p.color}">${p.badge?`<span class="badge">${p.badge}</span>`:''}${p.art==='phone'?'<div class="phoneart"></div>':'<div class="caseart"></div>'}</div><div class="info"><div class="type">${p.type==='glass'?'Защита экрана':'Аксессуары'}</div><div class="name">${p.name}</div><div class="desc">${p.desc}</div><div class="prodfoot"><span class="price">${money(p.price)}</span><button class="add" data-add="${p.id}" aria-label="Добавить товар">+</button></div></div></article>`).join('');document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b.classList.contains('filter')&&b.dataset.filter===filter))}
 function count(){ $('count').textContent=cart.reduce((s,x)=>s+x.qty,0)}
